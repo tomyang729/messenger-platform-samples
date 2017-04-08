@@ -1,0 +1,25 @@
+{
+  "name": "messenger-platform-samples",
+  "version": "1.0.0",
+  "description": "This is a sample project showcasing the Messenger Platform. You can go through the [walk-through](https://developers.facebook.com/docs/messenger-platform/quickstart) to understand this code in more detail. The [Complete Guide](https://developers.facebook.com/docs/messenger-platform/implementation) goes deeper into the features available.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomyang729/messenger-platform-samples.git"
+  },
+  "author": "tom.yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomyang729/messenger-platform-samples/issues"
+  },
+  "homepage": "https://github.com/tomyang729/messenger-platform-samples#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "config": "^1.25.1",
+    "express": "^4.15.2",
+    "request": "^2.81.0"
+  }
+}

@@ -3,17 +3,16 @@
 const
     bodyParser = require('body-parser'),
     express = require('express'),
-    https = require('https'),
-    request = require('request');
+    https = require('https');
 
 const
-    helpers = require('./node/app'),
+    responseActions = require('./node/app'),
     CONSTANTS = require('./node/constant');
 
 let app = express();
 app.set('port', process.env.PORT || 5000);
 app.set('view engine', 'ejs');
-app.use(bodyParser.json({ verify: helpers.verifyRequestSignature }));
+app.use(bodyParser.json({ verify: responseActions.verifyRequestSignature }));
 app.use(express.static('node/public'));
 
 
@@ -62,17 +61,17 @@ app.post('/webhook', function (req, res) {
             // Iterate over each messaging event
             pageEntry.messaging.forEach(function(messagingEvent) {
                 if (messagingEvent.optin) {
-                    helpers.receivedAuthentication(messagingEvent);
+                    responseActions.receivedAuthentication(messagingEvent);
                 } else if (messagingEvent.message) {
-                    helpers.receivedMessage(messagingEvent);
+                    responseActions.receivedMessage(messagingEvent);
                 } else if (messagingEvent.delivery) {
-                    helpers.receivedDeliveryConfirmation(messagingEvent);
+                    responseActions.receivedDeliveryConfirmation(messagingEvent);
                 } else if (messagingEvent.postback) {
-                    helpers.receivedPostback(messagingEvent);
+                    responseActions.receivedPostback(messagingEvent);
                 } else if (messagingEvent.read) {
-                    helpers.receivedMessageRead(messagingEvent);
+                    responseActions.receivedMessageRead(messagingEvent);
                 } else if (messagingEvent.account_linking) {
-                    helpers.receivedAccountLink(messagingEvent);
+                    responseActions.receivedAccountLink(messagingEvent);
                 } else {
                     console.log("Webhook received unknown messagingEvent: ", messagingEvent);
                 }
